@@ -9,29 +9,26 @@ def get_data():
 data = get_data()
 
 
-spinCounter = 0
-dialPos = 50
+spinCounter: int = 0
+dial: int = 50
 zeros = 0
 
-for spin in data:
-    initPos = dialPos
+for line in data:
+    initDial = dial
+    move = int(line[1:])
 
-    if dialPos == 0: zeros += 1
-    num = int(spin[1:3])
-
-    if spin[0] == 'R':
-        if dialPos + num > 99:
-            dialPos = 0 + (99 - num)
-        else:
-            dialPos += num
+    if line[0] == 'R':
+        dial = (dial + move) % 100
     else:
-        if dialPos - num < 0:
-            dialPos = 99 - num
-        else:
-            dialPos -= num
-    
-    print(f'{initPos} - {spin} - {dialPos}')
+        dial = (dial - move) % 100
+
+    if dial == 0: zeros += 1
+    print(f'{initDial} - {line} - {dial}')
     spinCounter += 1
 
 print(spinCounter)
 print(zeros)
+
+
+
+
