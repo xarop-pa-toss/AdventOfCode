@@ -1,7 +1,7 @@
 from pathlib import Path
 import math
 
-data: list[str] = (lambda: Path(__file__).with_name('Day1Data.txt').read_text(encoding="utf-8").splitlines())()
+data: list[str] = (lambda: Path(__file__).with_name('Day1Part2Example.txt').read_text(encoding="utf-8").splitlines())()
 spinCounter: int = 0
 dial: int = 50
 zeroes: int = 0
@@ -35,6 +35,7 @@ dial: int = 50
 zeroes: int = 0
 
 for line in data:
+    initDial = dial
     move = int(line[1:])
 
     if line[0] == 'R':
@@ -49,5 +50,7 @@ for line in data:
         
         dial = (end_pos) % 100
         zeroes += multiples_of_100
+
+    print(f'{initDial} - {line} - {dial} / {zeroes}')
 
 print(zeroes)
