@@ -31,13 +31,13 @@ local function getIDsFromFile(path)
     end
 end
 
-local idsRaw = getIDsFromFile('./Day2Data.txt')
+local idsRaw = getIDsFromFile('./Day2/Day2Data.txt')
 local idsSplit = {}
-for k, id in ipairs(idsRaw) do
-    table.insert(idsSplit, { getFullRange(id) })
+for i, v in ipairs(idsRaw) do
+    table.insert(idsSplit, { getFullRange(v) })
 end
 
-print(Utils.dumpTable(idsSplit));
+print(Utils.DumpTable(idsSplit));
 
 -- print(Utils.dumpTable(getIDsFromFile('./Day2Data.txt')))
 
