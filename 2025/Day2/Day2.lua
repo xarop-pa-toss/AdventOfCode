@@ -7,10 +7,11 @@ local function getFullRange(range)
     local rangeEnd = string.sub(range, dashIndex + 1, range.length)
 
     local fullRange = {}
-    for i = rangeStart, rangeEnd do
+    for i = 1, rangeEnd - rangeStart do
         fullRange[i] = rangeStart + i
     end
 
+    print('Finished range '..rangeStart..' - '..rangeEnd)
     return fullRange
 end
 
@@ -33,7 +34,7 @@ end
 
 local idsRaw = getIDsFromFile('./Day2/Day2Data.txt')
 local idsSplit = {}
-for i, v in ipairs(idsRaw) do
+for i, v in pairs(idsRaw) do
     table.insert(idsSplit, { getFullRange(v) })
 end
 
