@@ -1,11 +1,11 @@
 local utils = {}
 
-function DumpTable(tab)
+function utils.DumpTable(tab)
    if type(tab) == 'table' then
       local s = '{ '
       for k,v in pairs(tab) do
          if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. DumpTable(v) .. ','
+         s = s .. '['..k..'] = ' .. utils.DumpTable(v) .. ','
       end
       return s .. '} '
    else
@@ -14,5 +14,3 @@ function DumpTable(tab)
 end
 
 return utils
-
---
